@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.caio.curso.entities.Category;
 import com.caio.curso.entities.Order;
 import com.caio.curso.entities.OrderItem;
+import com.caio.curso.entities.Payment;
 import com.caio.curso.entities.Product;
 import com.caio.curso.entities.User;
 import com.caio.curso.entities.enums.OrderStatus;
@@ -84,5 +85,9 @@ public class TestConfig implements CommandLineRunner{
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
-	}
+		Payment pay1 = new Payment(null, Instant.parse("2019-05-20T21:54:10Z"),o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);	
+		}
 }
